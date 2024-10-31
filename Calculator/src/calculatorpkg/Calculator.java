@@ -23,8 +23,8 @@ public class Calculator extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel Cpanel;
 	private JTextField ResultField;
-	private JButton btn_reversearrow; // private variable buttons for they should know each other so it is out of the class
-	private JButton btn_arrow;
+	private JButton btn_reversearrow; // Private variable buttons for they should know each other so it is out of the class
+	private JButton btn_arrow; 
 
 	
 	String checkString; // Checking for the ResultField is empty or not
@@ -304,6 +304,9 @@ public class Calculator extends JFrame {
 				
 				else {
 					
+					
+					
+					
 				}
 				
 			}
@@ -352,7 +355,7 @@ public class Calculator extends JFrame {
 				math = 5;
 				checkString = ResultField.getText();
 				
-				if (checkString.isEmpty() == false) {
+				if (checkString.isEmpty() == false && Float.parseFloat(checkString) > 0 ) {
 					
 					number1 = Float.parseFloat(ResultField.getText());
 					ResultField.setText("");
@@ -378,7 +381,7 @@ public class Calculator extends JFrame {
 				
 				checkString = ResultField.getText();
 				
-				if (checkString.isEmpty() == false) {
+				if (checkString.isEmpty() == false && Float.parseFloat(checkString) >= 0 ) {
 					
 					number1 = Float.parseFloat(ResultField.getText());
 					
@@ -396,6 +399,47 @@ public class Calculator extends JFrame {
 		btn_root.setBounds(293, 187, 70, 70);
 		Cpanel.add(btn_root);
 		
+		
+		
+		// Permutation Method and button
+		
+		JButton btn_factorial = new JButton("!");
+		btn_factorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				checkString = ResultField.getText();
+				
+				double reresult = 1;
+				
+				if (checkString.isEmpty() == false & Float.parseFloat(checkString) >= 0 ) {
+					
+					number1 = Float.parseFloat(ResultField.getText());
+					
+					if (Math.round(number1) < 1) {
+						
+						ResultField.setText("1");
+						
+					}
+					
+					for (int i = Math.round(number1) ; i >=1 ; i--) {
+						
+						reresult = reresult * i;
+						
+						ResultField.setText(String.valueOf(reresult));
+						
+						
+					}
+					
+					
+				}
+				
+				
+			}
+		});
+		btn_factorial.setVisible(false);
+		btn_factorial.setFont(new Font("SansSerif", Font.BOLD, 23));
+		btn_factorial.setBounds(293, 283, 70, 70);
+		Cpanel.add(btn_factorial);
 		
 		
 		// Changing to Basic Mode
@@ -418,6 +462,9 @@ public class Calculator extends JFrame {
 					
 					btn_multiplication.setVisible(true);
 					btn_root.setVisible(false);
+					
+					btn_substract.setVisible(true);
+					btn_factorial.setVisible(false);
 					
 				}
 				
@@ -447,6 +494,9 @@ public class Calculator extends JFrame {
 					
 					btn_multiplication.setVisible(false);
 					btn_root.setVisible(true);
+					
+					btn_substract.setVisible(false);
+					btn_factorial.setVisible(true);
 					
 				}
 				
@@ -578,14 +628,30 @@ public class Calculator extends JFrame {
 					
 					if (math == 5) {
 						
+						if (checkString.isEmpty() == false) {
+							
 							number2 = Float.parseFloat(ResultField.getText());
-							double logX = Math.log(number2);
-							double logB = Math.log(number1);
 							
-							resultnumber = (float) (logX / logB);
-							ResultField.setText(String.valueOf(resultnumber));
+							if (number1 > 0 && number2 > 0) {
+								
+								
+								double logX = Math.log(number2);
+								double logB = Math.log(number1);
+								
+								resultnumber = (float) (logX / logB);
+								ResultField.setText(String.valueOf(resultnumber));
+								
+								checkOp = true;							
+								checkComma = true;
+							}
 							
-							checkComma = true;
+							
+								
+							
+							
+						}
+						
+						
 							
 						
 					}
@@ -602,6 +668,8 @@ public class Calculator extends JFrame {
 		btn_result.setFont(new Font("SansSerif", Font.BOLD, 20));
 		btn_result.setBounds(293, 476, 70, 61);
 		Cpanel.add(btn_result);
+		
+		
 		
 		
 	}
