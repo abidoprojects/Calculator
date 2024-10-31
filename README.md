@@ -2,7 +2,7 @@
 
 #Basic and Complex Calculator Using Java
 
-#This Project Uses Java for operating simple and complex operating tasks such as basics includes (+,-,/,x) and complex tasks (log,√x,x!) and more.
+#This Project Uses Java for operating simple and complex operating tasks such as basics includes (+,-,/,x) and complex tasks (log,√x,x!)
 
 
 ![calc1](https://github.com/user-attachments/assets/df606ce0-4e01-44fa-9f4d-502819f03af5)
